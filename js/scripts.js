@@ -23,7 +23,7 @@ function closeSidebar() {
 const barChartOptions = {
   series: [
     {
-      data: [10, 8, 6, 4, 2],
+      data: [10, 8, 6, 4, 2], // Update with your actual data
     },
   ],
   chart: {
@@ -33,7 +33,7 @@ const barChartOptions = {
       show: false,
     },
   },
-  colors: ['#246dec', '#cc3c43', '#367952', '#f5b74f', '#4f35a1'],
+  colors: ['#246dec', '#367952', '#f5b74f', '#9c27b0', '#cc3c43'],
   plotOptions: {
     bar: {
       distributed: true,
@@ -49,11 +49,11 @@ const barChartOptions = {
     show: false,
   },
   xaxis: {
-    categories: ['Laptop', 'Phone', 'Monitor', 'Headphones', 'Camera'],
+    categories: ['Temperature', 'Humidity', 'Door Status', 'Power Consumption', 'Alerts'],
   },
   yaxis: {
     title: {
-      text: 'Count',
+      text: 'Values',
     },
   },
 };
@@ -68,12 +68,12 @@ barChart.render();
 const areaChartOptions = {
   series: [
     {
-      name: 'Purchase Orders',
-      data: [31, 40, 28, 51, 42, 109, 100],
+      name: 'Temperature',
+      data: [31, 40, 28, 51, 42, 109, 100], // Update with your actual data
     },
     {
-      name: 'Sales Orders',
-      data: [11, 32, 45, 32, 34, 52, 41],
+      name: 'Humidity',
+      data: [11, 32, 45, 32, 34, 52, 41], // Update with your actual data
     },
   ],
   chart: {
@@ -97,13 +97,13 @@ const areaChartOptions = {
   yaxis: [
     {
       title: {
-        text: 'Purchase Orders',
+        text: 'Temperature',
       },
     },
     {
       opposite: true,
       title: {
-        text: 'Sales Orders',
+        text: 'Humidity',
       },
     },
   ],

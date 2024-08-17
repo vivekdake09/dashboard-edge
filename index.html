@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Cold Storage Admin Dashboard</title>
 
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
-            <span class="material-icons-outlined">inventory</span> Bob's Inventory
+            <span class="material-icons-outlined">ac_unit</span>Cold Storage
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -50,27 +50,27 @@
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">inventory_2</span> Products
+              <span class="material-icons-outlined">thermostat</span> Temperature
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">fact_check</span> Inventory
+              <span class="material-icons-outlined">water_damage</span> Humidity
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">add_shopping_cart</span> Purchase Orders
+              <span class="material-icons-outlined">door_front</span> Door Status
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">shopping_cart</span> Sales Orders
+              <span class="material-icons-outlined">power</span> Power Consumption
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">poll</span> Reports
+              <span class="material-icons-outlined">notification_important</span> Alerts
             </a>
           </li>
           <li class="sidebar-list-item">
@@ -85,41 +85,49 @@
       <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
+          <p class="font-weight-bold">COLD STORAGE DASHBOARD</p>
         </div>
 
         <div class="main-cards">
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">PRODUCTS</p>
-              <span class="material-icons-outlined text-blue">inventory_2</span>
+              <p class="text-primary">Temperature</p>
+              <span class="material-icons-outlined text-blue">thermostat</span>
             </div>
-            <span class="text-primary font-weight-bold">249</span>
+            <span class="text-primary font-weight-bold">-2°C</span>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">PURCHASE ORDERS</p>
-              <span class="material-icons-outlined text-orange">add_shopping_cart</span>
+              <p class="text-primary">Humidity</p>
+              <span class="material-icons-outlined text-green">water_damage</span>
             </div>
-            <span class="text-primary font-weight-bold">83</span>
+            <span class="text-primary font-weight-bold">65%</span>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">SALES ORDERS</p>
-              <span class="material-icons-outlined text-green">shopping_cart</span>
+              <p class="text-primary">Door Status</p>
+              <span class="material-icons-outlined text-orange">door_front</span>
             </div>
-            <span class="text-primary font-weight-bold">79</span>
+            <span class="text-primary font-weight-bold">Closed</span>
           </div>
 
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">INVENTORY ALERTS</p>
+              <p class="text-primary">Power Consumption</p>
+              <span class="material-icons-outlined text-purple">power</span>
+            </div>
+            <span class="text-primary font-weight-bold">120 kWh</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Alerts</p>
               <span class="material-icons-outlined text-red">notification_important</span>
             </div>
-            <span class="text-primary font-weight-bold">56</span>
+            <span class="text-primary font-weight-bold">3</span>
           </div>
 
         </div>
@@ -127,13 +135,13 @@
         <div class="charts">
 
           <div class="charts-card">
-            <p class="chart-title">Top 5 Products</p>
-            <div id="bar-chart"></div>
+            <p class="chart-title">Temperature Over Time</p>
+            <div id="temperature-chart"></div>
           </div>
 
           <div class="charts-card">
-            <p class="chart-title">Purchase and Sales Orders</p>
-            <div id="area-chart"></div>
+            <p class="chart-title">Humidity Over Time</p>
+            <div id="humidity-chart"></div>
           </div>
 
         </div>
@@ -147,5 +155,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
     <script src="js/scripts.js"></script>
+    <script>
+      // Temperature Chart
+      var temperatureOptions = {
+        chart: {
+          type: 'line',
+          height: 350
+        },
+        series: [{
+          name: 'Temperature',
+          data: [20, 21, 19, 22, 20, 19, 21, 20, 19, 18, 17, 16]
+        }],
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        }
+      }
+      var temperatureChart = new ApexCharts(document.querySelector("#temperature-chart"), temperatureOptions);
+      temperatureChart.render();
+
+      // Humidity Chart
+      var humidityOptions = {
+        chart: {
+          type: 'line',
+          height: 350
+        },
+        series: [{
+          name: 'Humidity',
+          data: [60, 62, 63, 65, 66, 67, 68, 70, 71, 69, 68, 67]
+        }],
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        }
+      }
+      var humidityChart = new ApexCharts(document.querySelector("#humidity-chart"), humidityOptions);
+      humidityChart.render();
+    </script>
   </body>
 </html>
